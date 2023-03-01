@@ -2,3 +2,8 @@
 	path = OCA/l10n-spain
 	url = git@github.com:OCA/l10n-spain.git
 	branch = 16.0
+
+[submodule "OCA/account-financial-tools/account_asset_management"]
+	path = OCA/account-financial-tools/account_asset_management
+	url = git@github.com:OCA/account-financial-tools.git
+	branch = 16.0
