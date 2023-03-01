@@ -7,3 +7,8 @@
 	path = OCA/account-financial-tools/account_asset_management
 	url = git@github.com:OCA/account-financial-tools.git
 	branch = 16.0
+
+[submodule "OCA/reporting-engine/report_xlsx_helper"]
+	path = OCA/reporting-engine/report_xlsx_helper
+	url = git@github.com:OCA/reporting-engine.git
+	branch = 16.0
