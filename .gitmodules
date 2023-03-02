@@ -22,3 +22,8 @@
 	path = OCA/server-ux/date_range
 	url = git@github.com:OCA/server-ux.git
 	branch = 16.0
+
+[submodule "OCA/community-data-files/base_bank_from_iban"]
+	path = OCA/community-data-files/base_bank_from_iban
+	url = git@github.com:OCA/community-data-files.git
+	branch = 16.0
