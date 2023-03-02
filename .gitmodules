@@ -27,3 +27,8 @@
 	path = OCA/community-data-files/base_bank_from_iban
 	url = git@github.com:OCA/community-data-files.git
 	branch = 16.0
+
+[submodule "OCA/partner-contact/base_location_geonames_import"]
+	path = OCA/partner-contact/base_location_geonames_import
+	url = git@github.com:OCA/partner-contact.git
+	branch = 16.0
