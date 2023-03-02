@@ -12,3 +12,8 @@
 	path = OCA/reporting-engine/report_xlsx_helper
 	url = git@github.com:OCA/reporting-engine.git
 	branch = 16.0
+
+[submodule "OCA/account-financial-reporting/account_tax_balance"]
+	path = OCA/account-financial-reporting/account_tax_balance
+	url = git@github.com:OCA/account-financial-reporting.git
+	branch = 16.0
