@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<menuitem id="clientes_radioestudio_menu" name="Importar clientes" parent="account.menu_finance_receivables"/>
+	</data>
+</odoo>
