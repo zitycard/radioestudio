@@ -8,6 +8,9 @@
 	"version": "0.1",
 	"depends": ["base", "account_accountant"],
 	"data": [
-		"views/radioestudio.xml"
+		"views/radioestudio.xml",
+		"wizard/popup_radioestudio.xml",
+		"security/security.xml",
+		"security/ir.model.access.csv"
 	]
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="radioestudio_importar_clientes_report_wizard" model="ir.ui.view">
+			<field name="name">radioestudio.importar.clientes.wizard.form</field>
+			<field name="model">popup.radioestudio</field>
+			<field name="arch" type="xml">
+				<form>
+					<div>
+						<div>
+							<p>Introduce el fichero de clientes</p>
+							<group>
+								<field name="fichero"/>
+							</group>
+						</div>
+					</div>
+					<footer>
+						<button string="Cancelar" special="cancel"/>
+						<button string="Confirmar" type="object" class="oe_highlight" name="generar_fichero_cliente"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>
