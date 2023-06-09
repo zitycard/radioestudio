@@ -1,24 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-		<record id="radioestudio_importar_clientes_report_wizard" model="ir.ui.view">
-			<field name="name">radioestudio.importar.clientes.wizard.form</field>
+		<record id="radioestudio_importar_generico_report_wizard" model="ir.ui.view">
+			<field name="name">radioestudio.importar.generico.wizard.form</field>
 			<field name="model">popup.radioestudio</field>
 			<field name="arch" type="xml">
 				<form>
 					<div>
-						<div>
-							<p>Introduce el fichero de clientes</p>
-							<group>
-								<field name="fichero"/>
-							</group>
-						</div>
+						<div name="cabecera"></div>
+						<group name="grupo">
+							<field name="fichero"/>
+						</group>
 					</div>
+					<p>Recuerda que una vez generado el fichero hay que importarlo en la zona de <span name="tipo"></span></p>
 					<footer>
-						<button string="Cancelar" special="cancel"/>
-						<button string="Confirmar" type="object" class="oe_highlight" name="generar_fichero_cliente"/>
+						<button string="Cancelar" special="cancel" name="cancelar"/>
+						<button string="Confirmar"/>
 					</footer>
 				</form>
+			</field>
+		</record>
+
+		<record id="radioestudio_importar_clientes_report_wizard" model="ir.ui.view">
+			<field name="name">radioestudio.importar.clientes.wizard.form</field>
+			<field name="model">popup.radioestudio</field>
+			<field name="inherit_id" ref="radioestudio_importar_generico_report_wizard"/>
+			<field name="mode">primary</field>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='cabecera']" position="replace">
+					<div name="cabecera">
+						<p>Introduce el fichero de clientes.</p>
+					</div>
+				</xpath>
+				<xpath expr="//span[@name='tipo']" position="replace">
+					<span name="tipo">clientes.</span>
+				</xpath>
+				<xpath expr="//footer/button[2]" position="replace">
+					<button string="Confirmar" type="object" class="oe_highlight" name="generar_fichero_cliente"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="radioestudio_importar_pgc_report_wizard" model="ir.ui.view">
+			<field name="name">radioestudio.importar.pgc.wizard.form</field>
+			<field name="model">popup.radioestudio</field>
+			<field name="inherit_id" ref="radioestudio_importar_generico_report_wizard"/>
+			<field name="mode">primary</field>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='cabecera']" position="replace">
+					<div name="cabecera">
+						<p>Introduce el fichero del PGC</p>
+					</div>
+				</xpath>
+				<xpath expr="//span[@name='tipo']" position="replace">
+					<span name="tipo">Plan General Contable.</span>
+				</xpath>
+				<xpath expr="//footer/button[2]" position="replace">
+					<button string="Confirmar" type="object" class="oe_highlight" name="generar_fichero_pgc"/>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="radioestudio_importar_facturas_report_wizard" model="ir.ui.view">
+			<field name="name">radioestudio.importar.facturas.wizard.form</field>
+			<field name="model">popup.radioestudio</field>
+			<field name="inherit_id" ref="radioestudio_importar_generico_report_wizard"/>
+			<field name="mode">primary</field>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@name='cabecera']" position="replace">
+					<div name="cabecera">
+						<p>Introduce el fichero de las facturas</p>
+					</div>
+				</xpath>
+				<xpath expr="//group[@name='grupo']" position="replace">
+					<field name="fichero" string="Fichero de movimientos"/>
+					<field name="fichero_facturas" string="Fichero de vencimientos"/>
+				</xpath>
+				<xpath expr="//span[@name='tipo']" position="replace">
+					<span name="tipo">facturas de cliente.</span>
+				</xpath>
+				<xpath expr="//footer/button[2]" position="replace">
+					<button string="Confirmar" type="object" class="oe_highlight" name="generar_fichero_factura"/>
+				</xpath>
 			</field>
 		</record>
 	</data>
