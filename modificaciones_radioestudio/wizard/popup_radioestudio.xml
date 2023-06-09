@@ -73,7 +73,9 @@
 					</div>
 				</xpath>
 				<xpath expr="//group[@name='grupo']" position="replace">
+					<label for="fichero">Fichero de movimientos</label>
 					<field name="fichero" string="Fichero de movimientos"/>
+					<label for="fichero_facturas">Fichero de vencimientos</label>
 					<field name="fichero_facturas" string="Fichero de vencimientos"/>
 				</xpath>
 				<xpath expr="//span[@name='tipo']" position="replace">
