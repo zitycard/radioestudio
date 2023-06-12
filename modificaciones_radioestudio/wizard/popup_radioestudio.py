@@ -13,6 +13,7 @@ class PopupRadioestudio(models.TransientModel):
 	fichero_facturas = fields.Binary(string = 'Fichero facturas')
 	fichero_descarga = fields.Binary(string = 'Fichero descarga')
 
+	# Métodos para mostrar los diferentes popups
 	def popup_clientes_radioestudio(self):
 		wizard = self.env['popup.radioestudio'].create({})
 		return {
@@ -65,8 +66,10 @@ class PopupRadioestudio(models.TransientModel):
 		datosFichero = "Cuenta a cobrar,Nombre,Calle,Teléfono,Tax ID,zip,Ubicación,Es una compañia\n"
 		for dato in datosCliente:
 			datosFichero += dato
+		# Se guarda el contenido del fichero en una variable codificado en base64
 		self.fichero_descarga = base64.b64encode(datosFichero.encode())
 
+		# Abre una nueva pestaña que descarga el fichero recién generado
 		return {
 			'type': 'ir.actions.act_url',
 			'url': '/web/content/popup.radioestudio/%s/fichero_descarga/%s?download=true' % (self.id, "Clientes.csv")
@@ -106,6 +109,7 @@ class PopupRadioestudio(models.TransientModel):
 		}
 
 
+	# Devuelve un array con los vencimientos, donde el número de factura es la clave y el vencimiento el valor
 	def _get_vencimientos(self):
 		ficheroVencimientos = (base64.decodebytes(self.fichero_facturas)).decode('cp437')
 		ficheroVencimientos = ficheroVencimientos.splitlines()
@@ -116,6 +120,7 @@ class PopupRadioestudio(models.TransientModel):
 			vencimientos.update({numero: fecha})
 		return vencimientos
 
+	# Devuelve la línea con la información referente a la factura 
 	def _get_datos_factura(self, linea, vencimientos):
 		numero = linea[0:10]
 		diario = self._get_diario(numero)
@@ -125,8 +130,9 @@ class PopupRadioestudio(models.TransientModel):
 		fechaFactura = linea[153:157] + "-" + linea[151:153] + "-" + linea[149:151] # aaaa-mm-dd | Campo "Fecha de Factura/Recibo" en el excel
 		fechaContable = linea[80:84] + "-" + linea[78:80] + "-" + linea[76:78] # aaaa-mm-dd | Campo "Fecha" en el excel
 		fechaVencimiento = ''
-		if numero in vencimientos:
-			fechaVencimiento = vencimientos[numero]
+		# Esta comprobación no se puede hacer contra la variable "numero" porque si empieza por "40" se cambia y ya no coincidiría
+		if linea[0:10] in vencimientos:
+			fechaVencimiento = vencimientos[linea[0:10]]
 		return '"' + self.empresa + '","' + numero + '","' + partner + '","' + fechaFactura + '","' + fechaContable + '","' + fechaVencimiento + '","' + diario + '"'
 
 	def _get_diario(self, numeracion):
@@ -183,6 +189,7 @@ class PopupRadioestudio(models.TransientModel):
 			elif numeroFactura != linea[0:10]:
 				productoGuardado = False
 				datosFactura = datosFactura + datosProducto
+				# Comprobación necesaria para evitar que haya líneas que no tengan bien cerradas las comillas
 				if datosFactura[len(datosFactura)-1] != '"':
 					datosFactura = datosFactura + '"\n'
 				else:
