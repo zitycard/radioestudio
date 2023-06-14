@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+	<record model="res.groups" id="group_radioestudio">
+		<field name="name">Importación radioestudio</field>
+	</record>
+</odoo>
