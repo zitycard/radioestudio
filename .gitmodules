@@ -32,3 +32,7 @@
 	path = OCA/partner-contact/base_location_geonames_import
 	url = git@github.com:OCA/partner-contact.git
 	branch = 16.0
+[submodule "OCA/hr-attendance"]
+	path = OCA/hr-attendance
+	url = https://github.com/OCA/hr-attendance.git
+	branch = 16.0
